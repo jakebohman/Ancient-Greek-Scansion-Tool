@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Ancient Greek Scansion</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <item>
+     <layout class="QHBoxLayout" name="topControls">
+      <item>
+       <widget class="QComboBox" name="outputType">
+        <item>
+         <property name="text">
+          <string>Dactylic Hexameter</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Elegiac Couplet</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Dactylic Pentameter</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="processButton">
+        <property name="text">
+         <string>Generate Output</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="ioLayout">
+      <item>
+       <layout class="QVBoxLayout" name="inputLayout">
+        <item>
+         <widget class="QStackedWidget" name="inputStack">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="pageText">
+           <layout class="QVBoxLayout" name="layoutText">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="inputLabel">
+              <property name="text">
+               <string>Input</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPlainTextEdit" name="inputText"/>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pasteButton">
+              <property name="maximumSize">
+               <size>
+                <width>48</width>
+                <height>24</height>
+               </size>
+              </property>
+              <property name="mouseTracking">
+               <bool>false</bool>
+              </property>
+              <property name="text">
+               <string>Paste</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="pageFile">
+           <layout class="QVBoxLayout" name="layoutFile">
+            <item alignment="Qt::AlignmentFlag::AlignVCenter">
+             <widget class="QPushButton" name="fileButton">
+              <property name="text">
+               <string>Select File...</string>
+              </property>
+             </widget>
+            </item>
+            <item alignment="Qt::AlignmentFlag::AlignTop">
+             <widget class="QLabel" name="fileLabel">
+              <property name="text">
+               <string>No file selected</string>
+              </property>
+              <property name="wordWrap">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="outputLayout">
+        <item>
+         <widget class="QLabel" name="outputLabel">
+          <property name="text">
+           <string>Output</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QTextEdit" name="outputText">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="copyButton">
+          <property name="maximumSize">
+           <size>
+            <width>48</width>
+            <height>24</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>Copy</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuInputOptions">
+    <property name="title">
+     <string>Input Options</string>
+    </property>
+    <addaction name="actionFromText"/>
+    <addaction name="actionFromFile"/>
+   </widget>
+   <addaction name="menuInputOptions"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionFromText">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>From Text</string>
+   </property>
+  </action>
+  <action name="actionFromFile">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>From File</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
