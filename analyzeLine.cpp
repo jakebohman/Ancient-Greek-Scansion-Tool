@@ -1,9 +1,9 @@
 #include "analyzeLine.h"
 
 // These lists are likely incomplete, which will cause errors.
-QString vowels = "ΆᾺἈἌἎἊἉἍἏἋᾸᾹᾼᾈᾌᾎᾊᾉᾍᾏᾋάᾶὰἀἄἆἂἁἅἇἃᾰᾱᾳᾴᾷᾲᾀᾄᾆᾂᾁᾅᾇᾃΈῈἘἜἚἙἝἛέὲἐἔἒἑἕἓΉῊἨἬἮἪἩἭἯἫῌᾘᾜᾞᾚᾙᾝᾟᾛᾒᾑᾕᾗᾓήἥὴῃἤἡἦἠῆἢἣῇἧᾐΊῚἸἼἾἺἹἽἿἻῘῙΪίῖὶἰἴἶἲἱἵἷἳῐῑϊΐῗῒΌῸὈὌὊὉὍὋόὸὀὄὂὁὅὃΎῪὙὝὟὛῨῩΫύῦὺὐὔὖὒὑὕὗὓῠῡϋΰῧῢΏῺὨᾨὬὮὪὩὭὯὫῼᾨᾬᾮᾪᾩᾭᾯᾫώῶὼὠὤὦὢὡὥὧὣῳῴῷῲᾠᾤᾦᾢᾡᾥᾧᾣΑαΕεΗηΙιΟοΥυΩω";
-QString longVowels = "ᾹᾼᾈᾌᾎᾊᾉᾍᾏᾋᾱᾳᾴᾷᾲᾀᾄᾆᾂᾁᾅᾇᾃΉῊἨἬἮἪἩἭἯἫῌᾘᾜᾞᾚᾙᾝᾟᾛᾒᾑᾕᾗᾓήῃἤἡἦἠῆἣἢῇἧᾐῙῑῩῡΏῺὨᾨὬὮὪὩὭὯὫῼᾨᾬᾮᾪᾩᾭᾯᾫώῶὼὠὤὦὢὡὥὧὣῳῴῷῲᾠᾤᾦᾢᾡᾥᾧᾣΗηΩω";
-QString consonants = "ΒβϐΓγΔδΖζΘθϑΚκϰΛλΜμΝνΞξΠπϖΡῬρϱῥΣσςΤτΦφϕΧχΨψϜϝ";
+QString vowels = "ΆᾺἈἌἎἊἉἍἏἋᾸᾹᾼᾈᾌᾎᾊᾉᾍᾏᾋάᾶὰἀἄἆἂἁἅἇἃᾰᾱᾳᾴᾷᾲᾀᾄᾆᾂᾁᾅᾇᾃΈῈἘἜἚἙἝἛέὲἐἔἒἑἕἓΉῊἨἬἮἪἩἭἯἫῌᾘᾜᾞᾚᾙᾝᾟᾛᾒᾑᾕᾗᾓήἥὴῃἤἡἦἠῆἢἣῇἧᾐῂῄᾔᾖΊῚἸἼἾἺἹἽἿἻῘῙΪίῖὶἰἴἶἲἱἵἷἳῐῑϊΐῗῒΌῸὈὌὊὉὍὋόὸὀὄὂὁὅὃΎῪὙὝὟὛῨῩΫύὺὐὔὖὒὑὕὗῦὓῠῡϋΰῧῢΏῺὨᾨὬὮὪὩὭὯὫῼᾨᾬᾮᾪᾩᾭᾯᾫώῶὼὠὤὦὢὡὥὧὣῳῴῷῲᾠᾤᾦᾢᾡᾥᾧᾣΑαΕεΗηΙιΟοΥυΩω";
+QString longVowels = "ᾹᾼᾈᾌᾎᾊᾉᾍᾏᾋᾱᾳᾴᾷᾲᾀᾄᾆᾂᾁᾅᾇᾃΉῊἨἬἮἪἩἭἯἫῌᾘᾜᾞᾚᾙᾝᾟᾛᾒᾑᾕᾗᾓήῃἤἡἦἠῆἣἢῇἧᾐῂᾔῄᾖῙῑῩῡΏῺὨᾨὬὮὪὩὭὯὫῼᾨᾬᾮᾪᾩᾭᾯᾫώῶὼὠὤὦὢὡὥὧὣῳῴῷῲᾠᾤᾦᾢᾡᾥᾧᾣΗηΩωῦᾶἆἇἇἶῖἷῗὖὗῧ";
+QString consonants = "ΒβϐΓγΔδΖζΘθϑΚκϰΛλΜμΝνΞξΠπϖΡῬρϱῥῤΣσςΤτΦφϕΧχΨψϜϝ";
 QString doubleConsonants = "ΖζΞξΨψ";
 QString dipthongs[] = {
     "Αι", "Αἰ", "Αἱ", "Αί", "Αἴ", "Αἵ", "Αὶ", "Αἳ", "Αἲ", "αι", "αἰ", "αἱ", "αί", "αἴ", "αἵ", "αὶ", "αἳ", "αἲ", "αἶ",
@@ -14,7 +14,7 @@ QString dipthongs[] = {
     "Ευ", "Εύ", "Εὺ", "Εὐ", "Εὔ", "Εὒ", "Εὑ", "Εὕ", "Εὓ", "ευ", "εύ", "εὺ", "εὐ", "εὔ", "εὒ", "εὑ", "εὕ", "εὓ",
     "Ου", "Ού", "Οὺ", "Οὐ", "Οὔ", "Οὒ", "Οὑ", "Οὕ", "Οὓ", "ου", "ού", "οὺ", "οὐ", "οὔ", "οὒ", "οὑ", "οὕ", "οὓ", "οὗ",
     "Ηυ", "Ηύ", "Ηὺ", "Ηὐ", "Ηὔ", "Ηὒ", "Ηὑ", "Ηὕ", "Ηὓ", "ηυ", "ηύ", "ηὺ", "ηὐ", "ηὔ", "ηὒ", "ηὑ", "ηὕ", "ηὓ",
-    "Αῖ", "αῖ", "Αῦ", "αῦ", "Εῖ", "εῖ", "Εῦ", "εῦ", "Οῖ", "οῖ", "Οῦ", "οῦ", "Ηῦ", "ηῦ", "Υῖ", "υῖ"
+    "Αῖ", "αῖ", "Αῦ", "αῦ", "Εῖ", "εῖ", "Εῦ", "εῦ", "Οῖ", "οῖ", "Οῦ", "οῦ", "Ηῦ", "ηῦ", "Υῖ", "υῖ", "οὖ", "εὖ", "αὖ", "εὗ", "εἷ"
 };
 
 // A plosive followed by a liquid or nasal may or may not count as a double consonant if using iambics or elegy. Some exceptions apply.
@@ -26,6 +26,11 @@ QString shortConsonants[] = {
     "Γλ", "Γρ", "γλ", "γρ", "Χλ", "Χρ", "Χμ", "Χν", "χλ", "χρ", "χμ", "χν"
 };
 
+//Potential synizesis
+QString synizesisCombos[] = {
+    "εω", "έω", "εῶ", "εώ", "έῳ"
+};
+
 /**
  * Splits a line of poetry into syllables for metric analysis
  * Example: "ἄνδρα μοι ἔννεπε, μοῦσα, πολύτροπον, ὃς μάλα πολλὰ" -> "ἄνδρ", "α μ", "οι ", "ἔνν","επ"...
@@ -33,12 +38,13 @@ QString shortConsonants[] = {
  * @param line  the line to be split
  * @return vector of split strings
  */
-QVector<QString> splitLine(QString line)
+QVector<QString> splitLine(QString line, bool synizesis)
 {
     QVector<QString> syllables;
 
     // Keep only vowels, consonants, and spaces
     QString cleanedLine;
+    QString forgotten;
     for (QChar c : line) {
         if (vowels.contains(c) || consonants.contains(c) || c == ' ')
             cleanedLine.append(c);
@@ -64,6 +70,13 @@ QVector<QString> splitLine(QString line)
                     potentialDipthong.append(c);
                     potentialDipthong.append(cleanedLine[i+1]);
                     if(std::find(std::begin(dipthongs), std::end(dipthongs), potentialDipthong) != std::end(dipthongs)){
+                        syllables.append(temp);
+                        temp.clear();
+                        temp.append(potentialDipthong);
+                        i++;
+                        continue;
+                    }
+                    if(synizesis == true && std::find(std::begin(synizesisCombos), std::end(synizesisCombos), potentialDipthong) != std::end(synizesisCombos)){
                         syllables.append(temp);
                         temp.clear();
                         temp.append(potentialDipthong);

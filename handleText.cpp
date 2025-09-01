@@ -10,8 +10,8 @@
  * @param line  the line to scan
  * @return the line's scansion
  */
-QString scanDactylicHexameter(QString line){
-    QVector<QString> syllables = splitLine(line);
+QString scanDactylicHexameter(QString line, bool synizesis){
+    QVector<QString> syllables = splitLine(line, synizesis);
     QString lengths = findLengths(syllables, true, true);
     QString savedLengths = lengths;
     if(lengths.length() < 2){
@@ -52,14 +52,21 @@ QString scanDactylicHexameter(QString line){
             i += 2;
             numFeet++;
         } else {
-            return QString("Not a valid hexameter line: " + lengths);
+            if(synizesis == false)
+                return scanDactylicHexameter(line, true);
+            else
+                return QString("Not a valid hexameter line: " + savedLengths);
         }
         // Add separator if not at end
         if (i < lengths.length())
             formatted += " | ";
     }
     if(numFeet != 6)
-        return QString("Not a valid hexameter line: " + lengths);
+        if(synizesis == false)
+            return scanDactylicHexameter(line, true);
+        else
+            return QString("Not a valid hexameter line: " + savedLengths);
+
     return formatted;
 }
 
@@ -70,8 +77,8 @@ QString scanDactylicHexameter(QString line){
  * @param line  the line to scan
  * @return the line's scansion
  */
-QString scanDactylicPentameter(QString line){
-    QVector<QString> syllables = splitLine(line);
+QString scanDactylicPentameter(QString line, bool synizesis){
+    QVector<QString> syllables = splitLine(line, synizesis);
     QString lengths = findLengths(syllables, true, true);
     QString savedLengths = lengths;
     if(lengths.length() < 2){
@@ -90,7 +97,7 @@ QString scanDactylicPentameter(QString line){
             else if (i > 1 && lengths[i-1] == 'u' && lengths[i-2] == '-')
                 lengths[i] = 'u';
             else
-                lengths[i] = '-';
+                lengths[i] = 'u';
         }
     }
 
@@ -108,7 +115,10 @@ QString scanDactylicPentameter(QString line){
             formatted += "- -";
             i += 2;
         } else {
-            return QString("Not a valid pentameter line: " + savedLengths);
+            if(synizesis == false)
+                return scanDactylicPentameter(line, true);
+            else
+                return QString("Not a valid pentameter line: " + savedLengths);
         }
         // Add separator if not at end
         if (i < lengths.length())
@@ -116,7 +126,10 @@ QString scanDactylicPentameter(QString line){
         count++;
     }
     if(lengths.length() != i+8 || lengths[i+2] != 'u' || lengths[i+3] != 'u' || lengths[i+5] != 'u' || lengths[i+6] != 'u')
-        return QString("Not a valid pentameter line: " + savedLengths);
+        if(synizesis == false)
+            return scanDactylicPentameter(line, true);
+        else
+            return QString("Not a valid pentameter line: " + savedLengths);
     return formatted + "- || - u u | - u u | -";
 }
 
